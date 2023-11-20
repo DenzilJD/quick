@@ -4,6 +4,15 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import OutsideAlerter from './ToggleDrop';
 import { useEffect, useState } from 'react';
+import { FaPlus } from "react-icons/fa6";
+import { BsThreeDots } from "react-icons/bs";
+import { MdOutlineSignalCellularAlt, MdOutlineSignalCellularAlt2Bar, MdOutlineSignalCellularAlt1Bar } from "react-icons/md";
+import { CgDanger } from "react-icons/cg";
+import { AiOutlineDash } from "react-icons/ai";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { MdOutlineRadioButtonUnchecked } from "react-icons/md";
+import { BiAdjust } from "react-icons/bi";
 
 const App = () => {
   const [tickets, setTickets] = useState([]);
@@ -85,56 +94,113 @@ const App = () => {
     if (group === 'priority') {
       return <div className='app-group'>
         <div className='group-item'>
-          <div>Urgent</div>
-          {tickets?.filter(dd => dd.priority === 4).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <AiOutlineDash className='p-icon' size='1.5rem' />
+            <div className='item'>No</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 0).length : ''}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.priority === 0).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='priority' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>High</div>
-          {tickets?.filter(dd => dd.priority === 3).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <CgDanger className='p-icon' color='red' size='1.5rem' />
+            <div className='item'>Urgent</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 4).length : 'ghj'}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.priority === 4).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='priority' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>Medium</div>
-          {tickets?.filter(dd => dd.priority === 2).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <MdOutlineSignalCellularAlt className='p-icon' color='orange' size='1.5rem' />
+            <div className='item'>High</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 3).length : 'ghj'}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.priority === 3).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='priority' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>Low</div>
-          {tickets?.filter(dd => dd.priority === 1).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <MdOutlineSignalCellularAlt2Bar className='p-icon' color='orange' size='1.5rem' />
+            <div className='item'>Medium</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 2).length : 'ghj'}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.priority === 2).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='priority' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>No</div>
-          {tickets?.filter(dd => dd.priority === 0).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <MdOutlineSignalCellularAlt1Bar className='p-icon' color='orange' size='1.5rem' />
+            <div className='item'>Low</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 1).length : 'ghj'}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.priority === 1).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='priority' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
       </div>
     }
     else if (group === 'user') {
       return <div className='app-group'>
         {users.map(u => <div className='group-item'>
-          <h5>{u.name}</h5>
-          {tickets?tickets.filter(dd => dd.userId === u.id).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />):'No created tasks.'}
+          <div className='item-head'>
+            <div className='sub-head'>
+              <img className='item img' src={`https://ui-avatars.com/api/?name=${u.name}+${u.name}&background=random`} />
+              <div className='item'>{u.name} </div>
+              <div className='item len'>{tickets ? tickets.filter(dd => dd.userId === u.id).length : 'ghj'}</div>
+            </div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets ? tickets.filter(dd => dd.userId === u.id).map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='user' userName={users.filter(u => u.id === d.userId)} />) : 'No created tasks.'}
         </div>)}
       </div>
     }
-    else{
+    else {
       return <div className='app-group'>
         <div className='group-item'>
-          <div>Backlog</div>
-          {tickets?.filter(dd => dd.status === 'Backlog').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <MdOutlineRadioButtonUnchecked className='p-icon' size='1.5rem' color='red' />
+            <div className='item'>Backlog</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 0).length : ''}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.status === 'Backlog').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='status' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>Todo</div>
-          {tickets?.filter(dd => dd.status === 'Todo').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <MdOutlineRadioButtonUnchecked className='p-icon' size='1.5rem' color='lightgrey' />
+            <div className='item'>Todo</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 0).length : ''}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.status === 'Todo').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='status' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>In Progress</div>
-          {tickets?.filter(dd => dd.status === 'In progress').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <BiAdjust className='p-icon' size='1.5rem' color='gold' />
+            <div className='item'>In Progress</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 0).length : ''}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.status === 'In progress').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='status' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>Done</div>
-          {tickets?.filter(dd => dd.status === 'Done').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <FaRegCheckCircle className='p-icon' size='1.5rem' color='green' />
+            <div className='item'>Done</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 0).length : ''}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.status === 'Done').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='status' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
         <div className='group-item'>
-          <div>Cancelled</div>
-          {tickets?.filter(dd => dd.status === 'Canceled').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} />)}
+          <div className='sub-head'>
+            <IoIosCloseCircleOutline className='p-icon' size='1.5rem' />
+            <div className='item'>Backlog</div>
+            <div className='item len'>{tickets ? tickets.filter(dd => dd.priority === 0).length : ''}</div>
+            <div><FaPlus className='img' /> <BsThreeDots className='img' /></div>
+          </div>
+          {tickets?.filter(dd => dd.status === 'Canceled').map(d => <Card id={d.id} title={d.title} tag={d.tag} userId={d.userId} status={d.status} priority={d.priority} group='status' userName={users.filter(u => u.id === d.userId)[0]} />)}
         </div>
       </div>
     }

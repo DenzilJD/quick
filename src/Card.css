@@ -10,6 +10,8 @@
 
 .card-id-group {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 10px;
 }
 
@@ -25,13 +27,17 @@
 
 .card-title-group {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .card-title {
     letter-spacing: 0.05rem;
     text-wrap: wrap;
     overflow-y: scroll;
-    height: 80px;
+    height: 60px;
+    width: 90%;
+    margin-left: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -43,6 +49,7 @@
 .card-info-group {
     margin-top: 10px;
     display: flex;
+    align-items: center;
 }
 
 .tag {
@@ -51,4 +58,10 @@
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.c-icon{
+    margin-right: 5px;
 }
