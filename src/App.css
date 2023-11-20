@@ -19,15 +19,13 @@ select{
   display: flex;
   width: fit-content;
   font-size: 1.5rem;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 10px;
   position: relative;
   cursor: pointer;
   position: relative;
 }
 
-.dropdown:hover {
+.app-display:hover {
   background-color: rgb(181, 181, 181);
 }
 
@@ -40,4 +38,14 @@ select{
   font-family: sans-serif;
   position: absolute;
   box-shadow: 0 0 2px black;
+}
+
+.app-group{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.group-item{
+  width: 30vw;
 }

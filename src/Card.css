@@ -1,11 +1,7 @@
-h2 {
-    text-wrap: wrap;
-}
-
 .card {
     border-radius: 10px;
     background-color: white;
-    max-width: 400px;
+    width: 30vw;
     padding: 20px;
     font-family: sans-serif;
     margin: 10px;
@@ -17,7 +13,7 @@ h2 {
     margin-top: 10px;
 }
 
-.card-id{
+.card-id {
     font-size: 1rem;
     color: grey;
 }
@@ -33,14 +29,23 @@ h2 {
 
 .card-title {
     letter-spacing: 0.05rem;
+    text-wrap: wrap;
+    overflow-y: scroll;
+    height: 80px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.card-info-group{
+.card-title::-webkit-scrollbar {
+    display: none;
+}
+
+.card-info-group {
     margin-top: 10px;
     display: flex;
 }
 
-.tag{
+.tag {
     border: 1.5px solid lightgrey;
     color: grey;
     padding: 10px;

@@ -8,7 +8,7 @@ export const Card = ({ id, title, tag, userId, status, priority }) => {
         </div>
         <div className='card-title-group'>
             {/* {status} */}
-            <h2 className='card-title'>{title}</h2>
+            <h3 className='card-title'>{title}</h3>
         </div>
         <div className='card-info-group'>
             {/* <div className='tag'>{priority}</div> */}
