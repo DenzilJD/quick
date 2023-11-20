@@ -1,0 +1,49 @@
+h2 {
+    text-wrap: wrap;
+}
+
+.card {
+    border-radius: 10px;
+    background-color: white;
+    max-width: 400px;
+    padding: 20px;
+    font-family: sans-serif;
+    margin: 10px;
+    box-shadow: 0 0 5px rgb(165, 162, 162);
+}
+
+.card-id-group {
+    display: flex;
+    margin-top: 10px;
+}
+
+.card-id{
+    font-size: 1rem;
+    color: grey;
+}
+
+.card-user-id {
+    margin-left: auto;
+    font-size: 1rem;
+}
+
+.card-title-group {
+    margin-top: 10px;
+}
+
+.card-title {
+    letter-spacing: 0.05rem;
+}
+
+.card-info-group{
+    margin-top: 10px;
+    display: flex;
+}
+
+.tag{
+    border: 1.5px solid lightgrey;
+    color: grey;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
